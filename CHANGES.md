@@ -1,6 +1,12 @@
 Changes
 =======
 
+(2019-12-07)
+------------
+
+* Add 64-bit manylinux1 and macosx Python 3.8 builds.
+* Update multibuild commit to 4491026 for Python 3.8 support.
+
 1.0.0 (soon)
 ------------
 

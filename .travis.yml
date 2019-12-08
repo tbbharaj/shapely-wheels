@@ -58,6 +58,12 @@ matrix:
     - MB_PYTHON_VERSION=3.7
     - NP_BUILD_DEP=numpy==1.14.5
     - NP_TEST_DEP=numpy==1.14.5
+  - name: "Python 3.8 x86_64 linux"
+    os: linux
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - NP_BUILD_DEP=numpy==1.17.3
+    - NP_TEST_DEP=numpy==1.17.3
   - name: "Python 2.7 osx"
     os: osx
     language: generic
@@ -93,11 +99,19 @@ matrix:
     - MB_PYTHON_VERSION=3.7
     - NP_BUILD_DEP=numpy==1.14.5
     - NP_TEST_DEP=numpy==1.14.5
+  - os: osx
+    language: generic
+    osx_image: xcode10.1
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - NP_BUILD_DEP=numpy==1.17.3
+    - NP_TEST_DEP=numpy==1.17.3
+    - MB_PYTHON_OSX_VER=10.9
 
 before_install:
     - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
-    - BUILD_DEPENDS="$NP_BUILD_DEP cython==0.29.5 wheel==0.31.1"
-    - TEST_DEPENDS="$NP_TEST_DEP pytest wheel==0.31.1 $GEN_DEPS"
+    - BUILD_DEPENDS="$NP_BUILD_DEP cython==0.29.14 wheel==0.31.1"
+    - TEST_DEPENDS="$NP_TEST_DEP attrs==19.1.0 pytest==4.0.2 mock;python_version<'3.4' boto3 packaging hypothesis==4.38.1 wheel==0.31.1 $GEN_DEPS"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
