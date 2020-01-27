@@ -1,19 +1,24 @@
 Changes
 =======
 
-(2019-12-08)
-------------
+## 2019-01-27
+
+* Update multibuild commit to 6b0ddb5.
+
+## 2019-01-12
+
+* Update GEOS to version 3.8.0.
+
+## 2019-12-08
 
 * Remove Python 3.4 builds.
 
-(2019-12-07)
-------------
+## 2019-12-07
 
 * Add 64-bit manylinux1 and macosx Python 3.8 builds.
 * Update multibuild commit to 4491026 for Python 3.8 support.
 
-1.0.0 (soon)
-------------
+## 1.0.0 (soon)
 
 * Multibuild commit is 548ebc8
 * GEOS version 3.6.2
