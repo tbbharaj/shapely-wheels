@@ -4,6 +4,8 @@
 
 
 function build_geos {
+    CFLAGS="$CFLAGS -g -O2"
+    CXXFLAGS="$CXXFLAGS -g -O2"
     build_simple geos $GEOS_VERSION https://download.osgeo.org/geos tar.bz2
 }
 
