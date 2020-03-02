@@ -1,6 +1,10 @@
 Changes
 =======
 
+## 2020-02-29
+
+* Compile GEOS with -g -O2 flags.
+
 ## 2019-01-27
 
 * Update multibuild commit to 6b0ddb5.
