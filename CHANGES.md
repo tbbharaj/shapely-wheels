@@ -1,5 +1,8 @@
 Changes
 =======
+## 2020-00-00
+
+* Move Windows AppVeyor build from Shapely to here.
 
 ## 2020-02-29
 
