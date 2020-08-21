@@ -102,5 +102,5 @@ cache:
   - C:\projects\deps -> %APPVEYOR_BUILD_FOLDER%\scripts\build_geos.cmd
 
 artifacts:
-  - path: pygeos\dist\*.whl
+  - path: dist\*.whl
     name: wheel
