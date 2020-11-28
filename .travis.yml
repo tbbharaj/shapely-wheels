@@ -19,6 +19,8 @@ env:
   - USE_CCACHE=1
 
 jobs:
+  exclude:
+  - python: 3.5
   include:
   - stage: build
   - name: "Python 3.6 aarch64 linux"
