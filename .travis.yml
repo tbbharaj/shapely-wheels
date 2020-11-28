@@ -18,13 +18,9 @@ env:
   - UNICODE_WIDTH=32
   - USE_CCACHE=1
 
-addons:
-  artifacts:
-    paths:
-    - $(ls wheelhouse/*.whl)
-
 jobs:
   include:
+  - stage: build
   - name: "Python 3.6 aarch64 linux"
     os: linux
     arch: arm64-graviton2
@@ -37,6 +33,15 @@ jobs:
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
+    script:
+      - echo "This stage will just build AArch64 wheel"
+    workspaces:
+      create:
+        name: ws1
+        paths:
+        - wheelhouse
+    after_success:
+      - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.7 aarch64 linux"
     os: linux
     arch: arm64-graviton2
@@ -49,6 +54,15 @@ jobs:
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
+    script:
+      - echo "This stage will just build AArch64 wheel"
+    workspaces:
+      create:
+        name: ws2
+        paths:
+        - wheelhouse
+    after_success:
+      - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.8 aarch64 linux"
     os: linux
     arch: arm64-graviton2
@@ -61,6 +75,22 @@ jobs:
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
+    script:
+      - echo "This stage will just build AArch64 wheel"
+    workspaces:
+      create:
+        name: ws3
+        paths:
+        - wheelhouse
+    after_success:
+      - echo "This stage will not upload aarch64 wheel"
+  - stage:
+    deploy:
+      provider: s3
+      access_key_id: $ARTIFACTS_KEY
+      secret_access_key: $ARTIFACTS_SECRET
+      bucket: $ARTIFACTS_BUCKET
+      local_dir: wheelhouse
 
 #  include:
 #  - name: "Python 2.7 x86_64 linux"
