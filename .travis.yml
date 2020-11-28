@@ -21,6 +21,7 @@ jobs:
   include:
   - stage: build
   - name: "Python 3.6 aarch64 linux"
+    python: 3.6
     os: linux
     arch: arm64-graviton2
     dist: focal
@@ -42,6 +43,7 @@ jobs:
     after_success:
       - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.7 aarch64 linux"
+    python: 3.6
     os: linux
     arch: arm64-graviton2
     dist: focal
@@ -63,6 +65,7 @@ jobs:
     after_success:
       - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.8 aarch64 linux"
+    python: 3.6
     os: linux
     arch: arm64-graviton2
     dist: focal
@@ -84,6 +87,7 @@ jobs:
     after_success:
       - echo "This stage will not upload aarch64 wheel"
   - stage: deploy
+    python: 3.6
     script: skip
     before_install: skip
     install: skip
