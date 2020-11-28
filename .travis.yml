@@ -25,8 +25,7 @@ addons:
 
 jobs:
   include:
-  - stage: Build and test wheel
-    name: "Python 3.6 aarch64 linux"
+  - name: "Python 3.6 aarch64 linux"
     os: linux
     arch: arm64-graviton2
     dist: focal
@@ -38,15 +37,6 @@ jobs:
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
-    script:
-        - echo "This stage will just build AArch64 wheel"
-    workspaces:
-      create:
-        name: ws1
-        paths:
-          - wheelhouse
-    after_success:
-      - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.7 aarch64 linux"
     os: linux
     arch: arm64-graviton2
@@ -59,15 +49,6 @@ jobs:
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
-    script:
-        - echo "This stage will just build AArch64 wheel"
-    workspaces:
-      create:
-        name: ws2
-        paths:
-          - wheelhouse
-    after_success:
-      - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.8 aarch64 linux"
     os: linux
     arch: arm64-graviton2
@@ -80,15 +61,6 @@ jobs:
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
-    script:
-        - echo "This stage will just build AArch64 wheel"
-    workspaces:
-      create:
-        name: ws3
-        paths:
-          - wheelhouse
-    after_success:
-      - echo "This stage will not upload aarch64 wheel"
 
 #  include:
 #  - name: "Python 2.7 x86_64 linux"
