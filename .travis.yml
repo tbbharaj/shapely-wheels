@@ -85,6 +85,7 @@ jobs:
     after_success:
       - echo "This stage will not upload aarch64 wheel"
   - stage:
+    script: skip
     deploy:
       provider: s3
       access_key_id: $ARTIFACTS_KEY
