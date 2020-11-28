@@ -18,6 +18,10 @@ env:
   - UNICODE_WIDTH=32
   - USE_CCACHE=1
 
+stages:
+  - build
+  - deploy
+
 jobs:
   exclude:
   - env: PLAT=x86_64
