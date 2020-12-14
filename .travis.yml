@@ -13,7 +13,7 @@ cache:
 env:
   global:
   - REPO_DIR="Shapely"
-  - BUILD_COMMIT=1.7.1
+  - BUILD_COMMIT=88f6bc3
   - PLAT=x86_64
   - UNICODE_WIDTH=32
   - USE_CCACHE=1
@@ -25,18 +25,6 @@ addons:
 
 jobs:
   include:
-  - name: "Python 2.7 x86_64 linux"
-    os: linux
-    env:
-    - MB_PYTHON_VERSION=2.7
-    - NP_BUILD_DEP=numpy==1.10.4
-    - NP_TEST_DEP=numpy==1.11.3
-  - name: "Python 3.5 x86_64 linux"
-    os: linux
-    env:
-    - MB_PYTHON_VERSION=3.5
-    - NP_BUILD_DEP=numpy==1.10.4
-    - NP_TEST_DEP=numpy==1.11.3
   - name: "Python 3.6 x86_64 linux"
     os: linux
     env:
@@ -61,13 +49,6 @@ jobs:
     - MB_PYTHON_VERSION=3.9
     - NP_BUILD_DEP=numpy==1.19.4
     - NP_TEST_DEP=numpy==1.19.4
-  - name: "Python 3.5 osx"
-    os: osx
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=3.5
-    - NP_BUILD_DEP=numpy==1.10.4
-    - NP_TEST_DEP=numpy==1.11.3
   - name: "Python 3.6 osx"
     os: osx
     language: generic
@@ -103,8 +84,8 @@ jobs:
 
 before_install:
     - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
-    - BUILD_DEPENDS="$NP_BUILD_DEP cython==0.29.21 wheel==0.31.1"
-    - TEST_DEPENDS="$NP_TEST_DEP attrs==19.1.0 pytest==4.0.2 mock;python_version<'3.4' boto3 packaging hypothesis==4.38.1 wheel==0.31.1 $GEN_DEPS"
+    - BUILD_DEPENDS="$NP_BUILD_DEP cython==0.29.21 wheel==0.34.2"
+    - TEST_DEPENDS="$NP_TEST_DEP attrs==19.1.0 pytest==4.0.2 mock;python_version<'3.4' boto3 packaging hypothesis==4.38.1 wheel==0.34.2 $GEN_DEPS"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
