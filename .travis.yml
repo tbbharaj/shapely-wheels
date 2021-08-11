@@ -41,13 +41,13 @@ jobs:
     - USE_CCACHE=0
     #script:
     #   - echo "This stage will just build AArch64 wheel"
-    workspaces:
-      create:
-        name: ws1
-        paths:
-          - wheelhouse
-    after_success:
-      - echo "This stage will not upload aarch64 wheel"
+    #workspaces:
+    #  create:
+    #    name: ws1
+    #    paths:
+    #      - wheelhouse
+    #after_success:
+    #  - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.7 aarch64 linux"
     os: linux
     arch: arm64-graviton2
@@ -60,15 +60,15 @@ jobs:
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
-    script:
-        - echo "This stage will just build AArch64 wheel"
-    workspaces:
-      create:
-        name: ws2
-        paths:
-          - wheelhouse
-    after_success:
-      - echo "This stage will not upload aarch64 wheel"
+    #script:
+    #    - echo "This stage will just build AArch64 wheel"
+    #workspaces:
+    #  create:
+    #    name: ws2
+    #    paths:
+    #      - wheelhouse
+    #after_success:
+    #  - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.8 aarch64 linux"
     os: linux
     arch: arm64-graviton2
@@ -82,20 +82,20 @@ jobs:
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_aarch64
       #- DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
     env:
-    - MB_PYTHON_VERSION=3.8
+    - MB_PYTHON_VERSION=3.9
     - PLAT=aarch64
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
-    script:
-        - echo "This stage will just build AArch64 wheel"
-    workspaces:
-      create:
-        name: ws3
-        paths:
-          - wheelhouse
-    after_success:
-      - echo "This stage will not upload aarch64 wheel"
+      #script:
+      #  - echo "This stage will just build AArch64 wheel"
+      #workspaces:
+      #create:
+      #  name: ws3
+      #  paths:
+      #    - wheelhouse
+      # after_success:
+      #- echo "This stage will not upload aarch64 wheel"
 
  #- name: "Python 3.7 x86_64 linux"
  #   os: linux
@@ -162,7 +162,7 @@ install:
     - bash build-linux-arm64-wheels.sh
       #- build_wheel $REPO_DIR $PLAT
     - ls -l ${TRAVIS_BUILD_DIR}/wheelhouse/
-    - unzip -l ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl
+      #- unzip -l ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl
 
 script:
     - install_run $PLAT
