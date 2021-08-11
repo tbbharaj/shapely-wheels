@@ -175,7 +175,7 @@ install:
     - clean_code $REPO_DIR $BUILD_COMMIT
     - ls -lrt Shapely/
     - echo $PLAT
-    - if [[ $PLAT == "aarch64" ]]; then bash build-linux-arm64-wheels.sh else build_wheel $REPO_DIR $PLAT; fi;
+    - if [[ $PLAT == "aarch64" ]]; then bash build-linux-arm64-wheels.sh; else build_wheel $REPO_DIR $PLAT; fi;
     - ls -l ${TRAVIS_BUILD_DIR}/wheelhouse/
       #- unzip -l ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl
 
