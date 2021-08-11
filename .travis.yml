@@ -26,12 +26,12 @@ addons:
 
 jobs:
   include:
-  - name: "Python 3.6 x86_64 linux"
-    os: linux
-    env:
-    - MB_PYTHON_VERSION=3.6
-    - NP_BUILD_DEP=numpy==1.15.4
-    - NP_TEST_DEP=numpy==1.15.4
+  #- name: "Python 3.6 x86_64 linux"
+  #  os: linux
+  #  env:
+  #  - MB_PYTHON_VERSION=3.6
+  #  - NP_BUILD_DEP=numpy==1.15.4
+  #  - NP_TEST_DEP=numpy==1.15.4
  
   - name: "Python 3.7 aarch64 linux"
     arch: arm64-graviton2
@@ -42,7 +42,7 @@ jobs:
     - MB_PYTHON_VERSION=3.7
     - PLAT=aarch64
     - NP_TEST_DEP=numpy>=1.19.0
-    - DOCKER_TEST_IMAGE=quay.io/pypa/manylinux2014_aarch64
+    - DOCKER_IMAGE=quay.io/pypa/manylinux2014_aarch64
       #- DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
     - USE_CCACHE=0
     workspaces:
