@@ -32,7 +32,7 @@ jobs:
     - NP_BUILD_DEP=numpy==1.15.4
     - NP_TEST_DEP=numpy==1.15.4
  
- - name: "Python 3.7 aarch64 linux"
+  - name: "Python 3.7 aarch64 linux"
     arch: arm64-graviton2
     dist: focal
     virt: vm
