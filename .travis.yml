@@ -49,38 +49,38 @@ jobs:
     - MB_PYTHON_VERSION=3.9
     - NP_BUILD_DEP=numpy==1.19.4
     - NP_TEST_DEP=numpy==1.19.4
-  - name: "Python 3.6 osx"
-    os: osx
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=3.6
-    - NP_BUILD_DEP=numpy==1.15.4
-    - NP_TEST_DEP=numpy==1.15.4
-  - name: "Python 3.7 osx"
-    os: osx
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=3.7
-    - NP_BUILD_DEP=numpy==1.15.4
-    - NP_TEST_DEP=numpy==1.15.4
-  - name: "Python 3.8 macos"
-    os: osx
-    language: generic
-    osx_image: xcode9.3
-    env:
-    - MB_PYTHON_VERSION=3.8
-    - NP_BUILD_DEP=numpy==1.17.5
-    - NP_TEST_DEP=numpy==1.17.5
-    - MB_PYTHON_OSX_VER=10.9
-  - name: "Python 3.9 macos"
-    os: osx
-    language: generic
-    osx_image: xcode9.3
-    env:
-    - MB_PYTHON_VERSION=3.9
-    - NP_BUILD_DEP=numpy==1.19.4
-    - NP_TEST_DEP=numpy==1.19.4
-    - MB_PYTHON_OSX_VER=10.9
+  #- name: "Python 3.6 osx"
+  #  os: osx
+  #  language: generic
+  #  env:
+  #  - MB_PYTHON_VERSION=3.6
+  #  - NP_BUILD_DEP=numpy==1.15.4
+  #  - NP_TEST_DEP=numpy==1.15.4
+  #- name: "Python 3.7 osx"
+  #  os: osx
+  #  language: generic
+  #  env:
+  #  - MB_PYTHON_VERSION=3.7
+  #  - NP_BUILD_DEP=numpy==1.15.4
+  #  - NP_TEST_DEP=numpy==1.15.4
+  #- name: "Python 3.8 macos"
+  #  os: osx
+  #  language: generic
+  #  osx_image: xcode9.3
+  #  env:
+  #  - MB_PYTHON_VERSION=3.8
+  #  - NP_BUILD_DEP=numpy==1.17.5
+  #  - NP_TEST_DEP=numpy==1.17.5
+  #  - MB_PYTHON_OSX_VER=10.9
+  #- name: "Python 3.9 macos"
+  #  os: osx
+  #  language: generic
+  #  osx_image: xcode9.3
+  #  env:
+  #  - MB_PYTHON_VERSION=3.9
+  #  - NP_BUILD_DEP=numpy==1.19.4
+  #  - NP_TEST_DEP=numpy==1.19.4
+  #  - MB_PYTHON_OSX_VER=10.9
 
 before_install:
     - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
