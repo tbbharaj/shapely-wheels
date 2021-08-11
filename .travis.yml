@@ -158,6 +158,7 @@ before_install:
 
 install:
     - clean_code $REPO_DIR $BUILD_COMMIT
+    - ls -lrt Shapely/
     - bash build-linux-arm64-wheels.sh
       #- build_wheel $REPO_DIR $PLAT
     - ls -l ${TRAVIS_BUILD_DIR}/wheelhouse/

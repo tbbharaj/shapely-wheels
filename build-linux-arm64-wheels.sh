@@ -13,11 +13,14 @@ fi
 ORIGINAL_PATH=$PATH
 UNREPAIRED_WHEELS=/tmp/wheels
 
+ls -lrt Shapely/
+
 # Compile wheels
 for PYBIN in /opt/python/cp3[789]*/bin; do
     PATH=${PYBIN}:$ORIGINAL_PATH
-    python setup.py bdist_wheel -d ${UNREPAIRED_WHEELS}
+    python Shapely/setup.py bdist_wheel -d ${UNREPAIRED_WHEELS}
 done
+ls -lrt
 
 # Bundle GEOS into the wheels
 for whl in ${UNREPAIRED_WHEELS}/*.whl; do
