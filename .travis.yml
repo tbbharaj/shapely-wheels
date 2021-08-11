@@ -26,14 +26,51 @@ addons:
 
 jobs:
   include:
-  #- name: "Python 3.6 x86_64 linux"
-  #  os: linux
-  #  env:
-  #  - MB_PYTHON_VERSION=3.6
-  #  - NP_BUILD_DEP=numpy==1.15.4
-  #  - NP_TEST_DEP=numpy==1.15.4
- 
+  - stage: Build and test wheel
+    name: "Python 3.6 aarch64 linux"
+    os: linux
+    arch: arm64-graviton2
+    dist: focal
+    virt: vm
+    group: edge
+    env:
+    - MB_PYTHON_VERSION=3.6
+    - PLAT=aarch64
+    - NP_BUILD_DEP=numpy>=1.19.0
+    - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
+    - USE_CCACHE=0
+    script:
+        - echo "This stage will just build AArch64 wheel"
+    workspaces:
+      create:
+        name: ws1
+        paths:
+          - wheelhouse
+    after_success:
+      - echo "This stage will not upload aarch64 wheel"
   - name: "Python 3.7 aarch64 linux"
+    os: linux
+    arch: arm64-graviton2
+    dist: focal
+    virt: vm
+    group: edge
+    env:
+    - MB_PYTHON_VERSION=3.7
+    - PLAT=aarch64
+    - NP_BUILD_DEP=numpy>=1.19.0
+    - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
+    - USE_CCACHE=0
+    script:
+        - echo "This stage will just build AArch64 wheel"
+    workspaces:
+      create:
+        name: ws2
+        paths:
+          - wheelhouse
+    after_success:
+      - echo "This stage will not upload aarch64 wheel"
+  - name: "Python 3.8 aarch64 linux"
+    os: linux
     arch: arm64-graviton2
     dist: focal
     virt: vm
@@ -44,6 +81,106 @@ jobs:
     - NP_TEST_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_aarch64
       #- DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - PLAT=aarch64
+    - NP_BUILD_DEP=numpy>=1.19.0
+    - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
+    - USE_CCACHE=0
+    script:
+        - echo "This stage will just build AArch64 wheel"
+    workspaces:
+      create:
+        name: ws3
+        paths:
+          - wheelhouse
+    after_success:
+      - echo "This stage will not upload aarch64 wheel"
+  - name: "Python 2.7 x86_64 linux"
+    os: linux
+    env:
+    - MB_PYTHON_VERSION=2.7
+    - NP_BUILD_DEP=numpy==1.10.4
+    - NP_TEST_DEP=numpy==1.11.3
+  - name: "Python 3.5 x86_64 linux"
+    os: linux
+    env:
+    - MB_PYTHON_VERSION=3.5
+    - NP_BUILD_DEP=numpy==1.10.4
+    - NP_TEST_DEP=numpy==1.11.3
+  - name: "Python 3.6 x86_64 linux"
+    os: linux
+    env:
+    - MB_PYTHON_VERSION=3.6
+    - NP_BUILD_DEP=numpy==1.11.3
+    - NP_TEST_DEP=numpy==1.11.3
+  - name: "Python 3.7 x86_64 linux"
+    os: linux
+    env:
+    - MB_PYTHON_VERSION=3.7
+    - NP_BUILD_DEP=numpy==1.14.5
+    - NP_TEST_DEP=numpy==1.14.5
+  - name: "Python 3.8 x86_64 linux"
+    os: linux
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - NP_BUILD_DEP=numpy==1.17.3
+    - NP_TEST_DEP=numpy==1.17.3
+  - name: "Python 3.5 osx"
+    os: osx
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.5
+    - NP_BUILD_DEP=numpy==1.10.4
+    - NP_TEST_DEP=numpy==1.11.3
+  - name: "Python 3.6 osx"
+    os: osx
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.6
+    - NP_BUILD_DEP=numpy==1.11.3
+    - NP_TEST_DEP=numpy==1.11.3
+  - name: "Python 3.7 osx"
+    os: osx
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.7
+    - NP_BUILD_DEP=numpy==1.14.5
+    - NP_TEST_DEP=numpy==1.14.5
+  - os: osx
+    language: generic
+    osx_image: xcode10.1
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - NP_BUILD_DEP=numpy==1.17.3
+    - NP_TEST_DEP=numpy==1.17.3
+    - MB_PYTHON_OSX_VER=10.9
+  - stage: Test wheel
+    name: "Python 3.6 aarch64 linux"
+    arch: arm64-graviton2
+    dist: focal
+    virt: vm
+    group: edge
+    env:
+    - MB_PYTHON_VERSION=3.6
+    - PLAT=aarch64
+    - NP_TEST_DEP=numpy>=1.19.0
+    - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+    - USE_CCACHE=0
+    workspaces:
+      use: ws1
+    install:
+      - echo "This stage will test and upload the AArch64 wheel"
+  - name: "Python 3.7 aarch64 linux"
+    arch: arm64-graviton2
+    dist: focal
+    virt: vm
+    group: edge
+    env:
+    - MB_PYTHON_VERSION=3.7
+    - PLAT=aarch64
+    - NP_TEST_DEP=numpy>=1.19.0
+    - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
     - USE_CCACHE=0
     workspaces:
       use: ws2
@@ -100,6 +237,21 @@ jobs:
  #   - NP_BUILD_DEP=numpy==1.19.4
  #   - NP_TEST_DEP=numpy==1.19.4
  #   - MB_PYTHON_OSX_VER=10.9
+  - name: "Python 3.8 aarch64 linux"
+    arch: arm64-graviton2
+    dist: focal
+    virt: vm
+    group: edge
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - PLAT=aarch64
+    - NP_TEST_DEP=numpy>=1.19.0
+    - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+    - USE_CCACHE=0
+    workspaces:
+      use: ws3
+    install:
+      - echo "This stage will test and upload the AArch64 wheel"
 
 before_install:
     - python -c "import fcntl; fcntl.fcntl(1, fcntl.F_SETFL, 0)"
