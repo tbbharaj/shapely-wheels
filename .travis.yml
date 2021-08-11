@@ -39,8 +39,8 @@ jobs:
     - NP_BUILD_DEP=numpy>=1.19.0
     - DOCKER_IMAGE=quay.io/pypa/manylinux2014_${PLAT}
     - USE_CCACHE=0
-    script:
-        - echo "This stage will just build AArch64 wheel"
+    #script:
+    #   - echo "This stage will just build AArch64 wheel"
     workspaces:
       create:
         name: ws1

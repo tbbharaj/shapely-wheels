@@ -25,5 +25,8 @@ ls -lrt ${UNREPAIRED_WHEELS}/
 
 # Bundle GEOS into the wheels
 for whl in ${UNREPAIRED_WHEELS}/*.whl; do
-    auditwheel repair ${whl} -w ../wheels
+    auditwheel repair ${whl} -w ../wheelhouse
 done
+
+ls -lrt
+ls -lrt wheelhouse/
