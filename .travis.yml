@@ -43,10 +43,10 @@ jobs:
     - NP_TEST_DEP=numpy>=1.19.0
     - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
     - USE_CCACHE=0
-    workspaces:
-      use: ws2
-    install:
-      - echo "This stage will test and upload the AArch64 wheel"
+    #workspaces:
+    #  use: ws2
+    #install:
+    #  - echo "This stage will test and upload the AArch64 wheel"
 
  #- name: "Python 3.7 x86_64 linux"
  #   os: linux
