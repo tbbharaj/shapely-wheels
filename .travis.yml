@@ -44,6 +44,8 @@ jobs:
         name: ws2
         paths:
           - wheelhouse
+    script:
+       - echo "This stage will just build AArch64 wheel"
     after_success:
       - echo "This stage will upload aarch64 wheel"
     #workspaces:
