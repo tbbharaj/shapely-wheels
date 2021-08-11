@@ -28,5 +28,6 @@ for whl in ${UNREPAIRED_WHEELS}/*.whl; do
     auditwheel repair ${whl} -w ../wheelhouse
 done
 
+cd ../
 ls -lrt
 ls -lrt wheelhouse/
